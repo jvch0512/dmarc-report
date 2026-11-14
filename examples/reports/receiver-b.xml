@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feedback>
+  <report_metadata><org_name>receiver-b.test</org_name><report_id>b-2002</report_id><date_range><begin>1763078400</begin><end>1763164799</end></date_range></report_metadata>
+  <policy_published><domain>example.test</domain><p>none</p><sp>none</sp><pct>100</pct></policy_published>
+  <record><row><source_ip>192.0.2.10</source_ip><count>310</count><policy_evaluated><disposition>none</disposition><dkim>pass</dkim><spf>pass</spf></policy_evaluated></row><identifiers><header_from>example.test</header_from></identifiers></record>
+  <record><row><source_ip>198.51.100.77</source_ip><count>8</count><policy_evaluated><disposition>none</disposition><dkim>fail</dkim><spf>fail</spf></policy_evaluated></row><identifiers><header_from>example.test</header_from></identifiers></record>
+  <record><row><source_ip>198.51.100.200</source_ip><count>3</count><policy_evaluated><disposition>reject</disposition><dkim>fail</dkim><spf>fail</spf></policy_evaluated></row><identifiers><header_from>example.test</header_from></identifiers></record>
+  <record><row><source_ip>203.0.113.9</source_ip><count>90</count><policy_evaluated><disposition>none</disposition><dkim>pass</dkim><spf>fail</spf></policy_evaluated></row><identifiers><header_from>example.test</header_from></identifiers></record>
+</feedback>

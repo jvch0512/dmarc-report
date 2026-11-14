@@ -1,0 +1,7 @@
+# 2 reports, 6 findings
+high	DMARC101	198.51.100.77	20 messages failed SPF and DKIM alignment and were delivered anyway (20 in total from this source): spoofing or a sender you forgot to authorise
+medium	DMARC102	192.0.2.25	35 of 35 messages pass through SPF only: forwarding will break alignment, add DKIM signing
+medium	DMARC101	198.51.100.200	3 messages failed SPF and DKIM alignment (blocked by the receiver)
+medium	DMARC102	203.0.113.9	250 of 250 messages pass through DKIM only: SPF is not aligned, check the envelope sender
+medium	DMARC103	example.test	policy is p=none (monitoring only) while 20 messages that fail alignment are delivered
+info	DMARC105	example.test	97.8% of 1038 messages pass DMARC (policy p=none)
