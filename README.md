@@ -2,6 +2,8 @@
 
 DMARC aggregate reports arrive as unreadable XML attachments. dmarc-report reads a folder of them, groups messages by sending IP, and answers the real questions: which sources fail both SPF and DKIM alignment and are still being delivered (spoofing or a forgotten sender), which legitimate senders pass on only one mechanism and will break on forwarding, and whether the policy is ready to move from monitoring to enforcement.
 
+![Terminal demo of dmarc-report on its sample data](docs/demo.svg)
+
 **Live demo:** https://jvch0512.github.io/dmarc-report/ (Synthetic reports for example.test from invented receivers, using documentation IP ranges.)
 
 Racket 8 (standard distribution only). The demo page is rendered from the tool's `--tsv` output by `scripts/site.py` (Python 3, only needed to regenerate the page).
@@ -45,3 +47,13 @@ make test    # 54 rackunit checks
 ```
 
 MIT.
+
+## Code scanning (SARIF)
+
+`scripts/tsv2sarif.py` converts the `--tsv` output into SARIF 2.1.0, so findings show up in GitHub code scanning:
+
+```sh
+./bin/dmarc-report examples/reports --tsv | python3 scripts/tsv2sarif.py --tool dmarc-report --prefix examples/reports > results.sarif
+```
+
+Upload `results.sarif` with `github/codeql-action/upload-sarif`. Severities map to SARIF levels (critical and high to error, medium to warning, low and info to note) and to a `security-severity` score.
